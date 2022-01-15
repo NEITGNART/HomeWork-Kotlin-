@@ -345,7 +345,7 @@ fun main(args: Array<String>) {
 //    println("1. ${getLength(s1)}") // 1. 5
 //    println("2. ${concat(s1, s2)}") // 2. HelloWorld
 //    println("3. ${upperCase(s3)}") // 3. RADAR
-//    println("4. ${remove(s3, "a")}") // 4. rdr
+//    println("4. ${replace(s3, "a")}") // 4. rdr
 //    println("5. ${remove(s3, "a")}") // 5. rdr
 //    println("6. ${insertStart("!!!")}") //  6. nlhdung!!!
 //    println("7. ${insertEnd("!!!")}") // 7. {!!!}nlhdung
