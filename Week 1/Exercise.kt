@@ -171,7 +171,7 @@ fun repeatString(str: String = "nlhdung", n: Int): Array<String> {
 //theo thứ tự tăng dần rồi trả về mảng kết quả
 
 fun sortIncreasingOrder(array: Array<Int>): Array<Int> {
-    return sortArray(array, true)
+    return sortArray(array, 1)
 }
 
 
@@ -179,7 +179,7 @@ fun sortIncreasingOrder(array: Array<Int>): Array<Int> {
 //theo thứ tự giảm dần rồi trả về mảng kết quả
 
 fun sortDecreasingOrder(array: Array<Int>): Array<Int> {
-    return sortArray(array, false)
+    return sortArray(array, 0)
 }
 
 
@@ -187,9 +187,9 @@ fun sortDecreasingOrder(array: Array<Int>): Array<Int> {
 //theo thứ tự tăng dần hoặc giảm dần, thứ tự này dự vào biến k cho trước (1: tăng
 //dần; 0: giảm dần) rồi trả về mảng kết quả
 
-fun sortArray(array: Array<Int>, comparator: Boolean): Array<Int> {
+fun sortArray(array: Array<Int>, comparator: Int): Array<Int> {
     array.sortWith(Comparator<Int> { a, b ->
-        if (comparator) {
+        if (comparator == 0) {
             b - a
         } else {
             a - b
