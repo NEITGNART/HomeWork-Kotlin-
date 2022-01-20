@@ -4,8 +4,6 @@ import java.util.*
 
 
 
-
-
 // EXERCISE STRING
 
 //1. Cho trước chuỗi s. Viết hàm trả về độ dài chuỗi; Gọi sử dụng hàm để in ra độ dài
@@ -82,7 +80,7 @@ fun subString(s: String): String {
 //1. Cho trước mảng số nguyên 5 phần tử. Viết hàm đảo ngược mảng và tao ra mảng
 //mới, sau đó trả về kết quả. Gọi hàm để in ra mảng mới
 
-fun reveseArray(arr: Array<Int>?): Array<Int> {
+fun reverseArray(arr: Array<Int>?): Array<Int> {
     return (arr?.reversedArray() ?: arr) as Array<Int>
 }
 
@@ -140,7 +138,7 @@ fun countDigit(n: Int): Pair<Int, Int> {
 //5. Cho trước số nguyên dương n, viết hàm tính giá trị biểu thức S = 1^2 + 2^2 +...+n^2,
 //trả về kết quả đã tính đc. Gọi hàm để in ra kết quả
 
-fun sum(n: Long): Long {
+fun sumFunction(n: Long): Long {
     var sum: Long = 0
     for (i in 1..n) {
         sum += i * i
@@ -170,17 +168,12 @@ fun repeatString(str: String = "nlhdung", n: Int): Array<String> {
 //7. Cho trước mảng số nguyên 5 phần tử. Viết hàm sắp xếp các phần tử trong mảng
 //theo thứ tự tăng dần rồi trả về mảng kết quả
 
-fun sortIncreasingOrder(array: Array<Int>): Array<Int> {
-    return sortArray(array, 1)
-}
-
+fun sortIncreasingOrder(array: Array<Int>) = sortArray(array, 1)
 
 //8. Cho trước mảng số nguyên 5 phần tử. Viết hàm sắp xếp các phần tử trong mảng
 //theo thứ tự giảm dần rồi trả về mảng kết quả
 
-fun sortDecreasingOrder(array: Array<Int>): Array<Int> {
-    return sortArray(array, 0)
-}
+fun sortDecreasingOrder(array: Array<Int>) = sortArray(array, 0)
 
 
 //9. Cho trước mảng số nguyên 5 phần tử. Viết hàm sắp xếp các phần tử trong mảng
@@ -188,13 +181,13 @@ fun sortDecreasingOrder(array: Array<Int>): Array<Int> {
 //dần; 0: giảm dần) rồi trả về mảng kết quả
 
 fun sortArray(array: Array<Int>, comparator: Int): Array<Int> {
-    array.sortWith(Comparator<Int> { a, b ->
+    array.sortWith { a, b ->
         if (comparator == 0) {
             b - a
         } else {
             a - b
         }
-    })
+    }
     return array
 }
 
@@ -257,7 +250,6 @@ fun gogo(array: Array<Int>): Array<Int> {
 }
 
 
-
 //1. Cho trước số km đã đi. Viết chương trình tính tiền đi taxi theo công thức:
 //1 km đầu giá 15000đ
 
@@ -271,14 +263,14 @@ fun calculateMoney(km: Int): Double {
         return money
     }
 
-    if (km <= 1) {
-        money = 15000.0
-    } else if (km <= 5) {
-        money = 15000.0 + (km - 1) * 13500.0
-    } else if (km <= 6) {
-        money = 15000.0 + 4 * 13500.0 + (km - 5) * 11000.0
-    };
 
+    money = if (km <= 1)
+        15000.0
+    else if (km <= 5)
+        15000.0 + (km - 1) * 13500.0
+    else
+        15000.0 + 4 * 13500.0 + (km - 5) * 11000.0
+    
     if (km > 120) {
         money *= 0.9
     }
@@ -334,6 +326,8 @@ fun findMin(n: Int): Int {
 }
 
 
+
+
 fun main(args: Array<String>) {
 
     val s1 = "Hello"
@@ -341,17 +335,82 @@ fun main(args: Array<String>) {
     val s3 = "radar"
 
 
-    //  OUTPUT STRING
-//    println("1. ${getLength(s1)}") // 1. 5
-//    println("2. ${concat(s1, s2)}") // 2. HelloWorld
-//    println("3. ${upperCase(s3)}") // 3. RADAR
-//    println("4. ${replace(s3, "a")}") // 4. rdr
-//    println("5. ${remove(s3, "a")}") // 5. rdr
-//    println("6. ${insertStart("!!!")}") //  6. nlhdung!!!
-//    println("7. ${insertEnd("!!!")}") // 7. {!!!}nlhdung
-//    println("8. ${replaceX(s3, 3)}") // 8. radnlhdungar
-//    println("9. ${count("nlhdung nlhdung nlhdungnlhdung nlhdungnlhdungnlhdung")}") // 9. 7
-//    println("10. ${subString(s3)}") // 10. dar
+    println("OUTPUT STRING")
+
+    println("1. ${getLength(s1)}") // 1. 5
+    println("2. ${concat(s1, s2)}") // 2. HelloWorld
+    println("3. ${upperCase(s3)}") // 3. RADAR
+    println("4. ${replace(s3, "a")}") // 4. rnlhdungdnlhdungr
+    println("5. ${remove(s3, "a")}") // 5. rdr
+    println("6. ${insertStart("!!!")}") //  6. nlhdung!!!
+    println("7. ${insertEnd("!!!")}") // 7. {!!!}nlhdung
+    println("8. ${replaceX(s3, 3)}") // 8. radnlhdungar
+    println("9. ${count("nlhdung nlhdung nlhdungnlhdung nlhdungnlhdungnlhdung")}") // 9. 7
+    println("10. ${subString(s3)}") // 10. dar
+
+    println("OUTPUT For and Array")
+
+    // create a array int
+    val array = arrayOf(1, 2, 3, 4, 5)
+    val reversed = reverseArray(array)
+
+
+    print("1. ")
+    reversed.forEach {
+        print("$it ")
+    }
+    println()
+
+
+    println("2. ${countDivisors(9999)}")
+    println("3. ${countDigitAndSum(9999)}")
+    println("4. ${countDigit(9999)}")
+    println("5. ${sumFunction(9999)}")
+    print("6.")
+    val repeat = repeatString(n = 5)
+    repeat.forEach {
+        print("$it ")
+    }
+    println()
+
+    print("7. ")
+
+    sortIncreasingOrder(array)
+    array.forEach {
+        print("$it ")
+    }
+    println()
+
+    print("8.")
+    sortIncreasingOrder(array)
+    array.forEach {
+        print("$it ")
+    }
+    println()
+
+
+    print("9.")
+    sortArray(array, 0)
+    array.forEach {
+        print("$it ")
+    }
+    println()
+
+
+    println("10. ${isPalindrome(2939)}")
+    println("11. ${isPrime(9998)}")
+    print("12. ")
+    val result = gogo(array)
+    result.forEach {
+        print("$it ")
+    }
+    println()
+    println("MISCELLANEOUS")
+
+    println("1. ${calculateMoney(15)}")
+    println("2. ${calculateMoney(15, 10, true)}")
+    println("3. ${VNDtoUSD(300120)}")
+    println("4. ${USDtoVND(101)}")
 
 
 }
